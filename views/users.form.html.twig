@@ -18,7 +18,13 @@
     <label for="name">Prénom : </label>
     <input type="text" name="prenom" />
     {% endif %}
-
+    <form method="post" name="formulaire" action="{{ url('users.save') }}">
+      {% for computers in computer %}
+      </br>
+        <input type="checkbox" name ={{computers.id}}>
+        <label for="name">{{computers.modele}}</label>
+      {% endfor%}
+    </form>
     <button type="submit">Envoyer</button>
 
 </form>

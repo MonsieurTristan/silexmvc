@@ -26,8 +26,8 @@ class IndexController
     {
         $parameters = $request->attributes->all();
         $user = $app['repository.user']->getById($parameters['id']);
-
-        return $app['twig']->render('users.form.html.twig', array('user' => $user));
+        $computer = $app['repository.computer']->getAll();
+        return $app['twig']->render('users.form.html.twig', array('user' => $user, 'computer' => $computer));
     }
 
     public function saveAction(Request $request, Application $app)
@@ -44,6 +44,7 @@ class IndexController
 
     public function newAction(Request $request, Application $app)
     {
-        return $app['twig']->render('users.form.html.twig');
+        $computer = $app['repository.computer']->getAll();
+        return $app['twig']->render('users.form.html.twig',array('computer'=> $computer));
     }
 }
