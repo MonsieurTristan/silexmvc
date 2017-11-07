@@ -1,0 +1,36 @@
+<h1>Liste des utilisateurs</h1>
+<form method="get" name="formulaire" action="{{ url('users.new') }}">
+  <button type="submit">Ajouter</button>
+</form>
+<form method="get" name="Computers" action="{{ url('computer.list') }}">
+  <button type="submit">Listes des computers</button>
+</form>
+<table>
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>NOM</th>
+    <th>PRENOM</th>
+    <th>ACTION</th>
+  </tr>
+</thead>
+<tbdoy>
+{% for user in users %}
+   <tr>
+     <td>{{user.id}}</td>
+     <td>{{user.nom}}</td>
+     <td>{{user.prenom}}</td>
+     <td>
+       <form method="post" name="formulaire" action="{{ url('users.delete', {id: user.id}) }}">
+            <button type="submit">Supprimer</button>
+        </form>
+      </td>
+      <td>
+        <form method="get" name="formulaire" action="{{ url('users.edit', {id: user.id}) }}">
+          <button type="submit">Modifier</button>
+        </form>
+      </td>
+   </tr>
+{% endfor %}
+</tbdoy>
+</table>

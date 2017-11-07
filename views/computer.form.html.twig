@@ -1,0 +1,21 @@
+<h2>Formulaire</h2>
+
+{% if computers is defined %}
+<form method="post" name="formulaire" action="{{ url('computer.save', {id: computer.id}) }}">
+
+    <input type="hidden" name="id" value={{computer.id}} />
+
+    <label for="name">Modèle: </label>
+    <input type="text" name="nom" value={{computer.nom}} />
+
+{% endif %}
+<form method="post" name="formulaire" action="{{ url('computer.save') }}">
+    <label for="name">Modèle : </label>
+    <input type="text" name="modele" />
+
+
+
+
+    <button type="submit">Envoyer</button>
+
+</form>
